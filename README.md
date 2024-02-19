@@ -1,3 +1,5 @@
+### Support nullable type parameter for custom serializer
+
 I want to jsonify an object which contains generic types, so I tried following codes 
 at first.
 
@@ -102,3 +104,10 @@ class TU<T, U>(t: T, u: U) {
     ) : KSerializer<TU<T, U>>
 }
 ```
+
+---
+
+Related to some other discussions about serializer for generic types:
+
+- issue #2555 [Support polymorphic subclass serializers with inferred type arguments by refactoring Serializers to bind to KTypes instead of / in addition to KClass's](https://github.com/Kotlin/kotlinx.serialization/issues/2555)
+- [Kotlinx Serialization: How to circumvent reified typeargs for deserialization?](https://www.reddit.com/r/Kotlin/comments/j37tyn/kotlinx_serialization_how_to_circumvent_reified/)
