@@ -100,9 +100,21 @@ type parameter as input. Here shows a type `TU` with optional `tSerializer` and 
 class TU<T, U>(t: T, u: U) {
     class Serializer<T, U>(
         tSerializer: KSerializer<T>?, // optional, null if we cannot found T's Serializer
-        uSerializer: KSerializer<T>
+        uSerializer: KSerializer<U>
     ) : KSerializer<TU<T, U>>
 }
+```
+
+or replace nullable `KSerializer` with a `EmptyKSerializer`. This will be easier because we 
+don't need to modify existed compiler plugin codes, but not suit for express `nullable`
+
+```kotlin
+class Serializer<T, U>(
+    tSerializer: KSerializer<*>, // * means any serializer is acceptable
+    uSerializer: KSerializer<T>,
+) : KSerializer<TU<T, U>>
+
+object EmptyKSerializer : KSerializer<Nothing>
 ```
 
 ---
