@@ -1,4 +1,4 @@
-### Support nullable type parameter for custom serializer
+### Support optional type parameter serializer for custom serializer
 
 I want to jsonify an object which contains generic types, so I tried following codes 
 at first.
